@@ -23,14 +23,14 @@ jobs:
           tags: type=sha
 
       - name: Print PAT
-        run: echo "The PAT is ${{ secrets.GITHUB_TOKEN }}"
+        run: echo "The PAT is ${{ github.GITHUB_TOKEN }}"
 
       - name: Login to GHCR
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ github.GITHUB_TOKEN }}
 
       - name: Build container
         uses: docker/build-push-action@v5
